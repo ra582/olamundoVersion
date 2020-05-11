@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,  } from '@angular/forms';
+import { UsersService } from 'src/app/services/users.service';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -12,7 +14,10 @@ export class UserFormComponent implements OnInit {
   public UserForm: FormGroup;
 
   constructor(
-private formBuilder: FormBuilder
+private formBuilder: FormBuilder,
+
+private usersService: UsersService,
+public navCtrl: NavController
   ) {
 
 
@@ -22,7 +27,7 @@ private formBuilder: FormBuilder
     id: [null],
 
     name: [
-      null,
+      'Joca da Silva',
       Validators.compose([
         Validators.required,
         Validators.minLength(3)
@@ -31,7 +36,7 @@ private formBuilder: FormBuilder
 
 
     email: [
-      null,
+      'joca@silva.com',
       Validators.compose([
         Validators.required,
         // Validators.pattern('^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$')
@@ -42,7 +47,8 @@ private formBuilder: FormBuilder
 
 
     avatar: [
-      null,
+      'https://picsum.photos/200',
+
       Validators.compose([
         Validators.required,
         // tslint:disable-next-line: max-line-length
@@ -61,6 +67,39 @@ ngOnInit() { }
 
 
 onSubmit() {
-console.log(this.UserForm.value);
+// console.log(this.UserForm.value);}
+if (this.UserForm.value.id === null) {
+
+
+
+
+  delete this.UserForm.value.id;
+
+  if (!this.UserForm.value.status) {
+    this.UserForm.value.status = 0;
+  } else {
+    this.UserForm.value.status = 1;
+  }
+
+  this.usersService.postUser(this.UserForm.value).subscribe(
+
+    (res: any) => {
+
+
+      if (res.status === 'success') {
+
+
+        alert(`"${this.UserForm.value.name}" foi adicionado com sucesso!\nClique em [Ok] para continuar...`);
+
+        this.navCtrl.navigateForward('usuarios/todos');
+
+      }
+    }
+  );
+
+} else {
+
+
+}
 }
 }

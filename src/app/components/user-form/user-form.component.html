@@ -11,25 +11,46 @@
 
   <ion-list lines="full" class="ion-margin">
 
-      
+     
       <ion-item>
-          <ion-label for="name" position="floating" color="primary">Nome:</ion-label>
+          <ion-label for="name" position="floating" color="primary">Nome:
+
+             
+              <ion-text color="danger" *ngIf="UserForm.controls.name.errors">
+
+                
+                  <small *ngIf="UserForm.controls.name.errors.required">* Obrigatório</small>
+
+                
+                  <small *ngIf="UserForm.controls.name.errors.minlength">* Inválido</small>
+              </ion-text>
+
+          </ion-label>
           <ion-input type="text" id="name" name="name" formControlName="name"></ion-input>
       </ion-item>
 
-     
       <ion-item>
-          <ion-label for="email" position="floating" color="primary">E-mail:</ion-label>
+          <ion-label for="email" position="floating" color="primary">E-mail:
+              <ion-text color="danger" *ngIf="UserForm.controls.email.errors">
+                  <small *ngIf="UserForm.controls.email.errors.required">* Obrigatório</small>
+                  <small *ngIf="UserForm.controls.email.errors.pattern">* Inválido</small>
+              </ion-text>
+          </ion-label>
           <ion-input type="email" id="email" name="email" formControlName="email"></ion-input>
       </ion-item>
 
      
       <ion-item>
-          <ion-label for="avatar" position="floating" color="primary">URL do avatar:</ion-label>
+          <ion-label for="avatar" position="floating" color="primary">URL do avatar:
+              <ion-text color="danger" *ngIf="UserForm.controls.avatar.errors">
+                  <small *ngIf="UserForm.controls.avatar.errors.required">* Obrigatório</small>
+                  <small *ngIf="UserForm.controls.avatar.errors.pattern">* Inválido</small>
+              </ion-text>
+          </ion-label>
           <ion-input type="url" id="avatar" name="avatar" formControlName="avatar"></ion-input>
       </ion-item>
 
-      
+     
       <ion-item>
           <ion-label for="status" color="primary">Status:</ion-label>
           <ion-toggle id="status" name="status" slot="end" formControlName="status"></ion-toggle>

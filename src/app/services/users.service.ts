@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 
-
 import { Observable } from 'rxjs';
 
 
 import { HttpClient } from '@angular/common/http';
 
 
-import { ResponseUsers, ResponseDelUser } from '../models/users.model';
+import { ResponseUsers, ResponseDelUser, ResponsePostUser } from '../models/users.model';
 
 
 @Injectable({
@@ -15,18 +14,18 @@ import { ResponseUsers, ResponseDelUser } from '../models/users.model';
 })
 export class UsersService {
 
+
   private apiUrl = 'http://localhost:8888/api';
 
 
   constructor(private http: HttpClient) { }
 
+
   getUsers(): Observable<ResponseUsers> {
     return this.http.get<ResponseUsers>(this.apiUrl);
   }
 
-
   getUser(id: string): Observable<ResponseUsers> {
-
 
     const url = `${this.apiUrl}?id=${id}`;
 
@@ -34,12 +33,26 @@ export class UsersService {
   }
 
 
+  deleteUser(id: string): Observable<ResponseDelUser> {
 
-deleteUser(id: string): Observable<ResponseDelUser> {
+
+    const url = `${this.apiUrl}?id=${id}`;
+
+    return this.http.delete<ResponseDelUser>(url);
+  }
 
 
-  const url = `${this.apiUrl}?id=${id}`;
+  postUser(data: any) {
+    let url = `${this.apiUrl}?`;
 
-  return this.http.delete<ResponseDelUser>(url);
-}
+    Object.keys(data).forEach(
+      (key) => {
+        url += `${key}=${data[key]}&`;
+      }
+    );
+
+    console.log(url);
+
+    return this.http.post<ResponsePostUser>(url, data);
+  }
 }

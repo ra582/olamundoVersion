@@ -8,18 +8,24 @@ export interface User {
     date: Date;
 }
 
+
 export interface ResponseUsers {
     status: string;
     result: User[];
 }
+
 
 export interface ResponseUser {
     status: string;
     result: User[];
 }
 
-
 export interface ResponseDelUser {
+    status: string;
+    result: string;
+}
+
+export interface ResponsePostUser {
     status: string;
     result: string;
 }
