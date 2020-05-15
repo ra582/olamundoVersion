@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 
+
 import { Observable } from 'rxjs';
 
 
 import { HttpClient } from '@angular/common/http';
 
 
-import { ResponseUsers, ResponseDelUser, ResponsePostUser } from '../models/users.model';
-
+import { ResponseUsers, ResponseUser, ResponseDelUser, ResponsePostUser, ResponsePutUser } from '../models/users.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,44 +15,48 @@ import { ResponseUsers, ResponseDelUser, ResponsePostUser } from '../models/user
 export class UsersService {
 
 
-  private apiUrl = 'http://localhost:8888/api';
+  private apiurl = 'http://localhost:8888/api';
 
 
   constructor(private http: HttpClient) { }
 
 
   getUsers(): Observable<ResponseUsers> {
-    return this.http.get<ResponseUsers>(this.apiUrl);
+
+    return this.http.get<ResponseUsers>(this.apiurl);
   }
 
-  getUser(id: string): Observable<ResponseUsers> {
 
-    const url = `${this.apiUrl}?id=${id}`;
+  getUser(id: string): Observable<ResponseUser> {
 
-    return this.http.get<ResponseUsers>(url);
+
+    const url = `${this.apiurl}?id=${id}`;
+
+
+    return this.http.get<ResponseUser>(url);
   }
 
 
   deleteUser(id: string): Observable<ResponseDelUser> {
 
 
-    const url = `${this.apiUrl}?id=${id}`;
+    const url = `${this.apiurl}?id=${id}`;
+
 
     return this.http.delete<ResponseDelUser>(url);
   }
 
 
-  postUser(data: any) {
-    let url = `${this.apiUrl}?`;
+  postUser(data: any): Observable<ResponsePostUser> {
 
-    Object.keys(data).forEach(
-      (key) => {
-        url += `${key}=${data[key]}&`;
-      }
-    );
 
-    console.log(url);
+    return this.http.post<ResponsePostUser>(this.apiurl, data);
+  }
 
-    return this.http.post<ResponsePostUser>(url, data);
+
+  updateUser(data: any): Observable<ResponsePutUser> {
+
+
+    return this.http.put<ResponsePutUser>(this.apiurl, data);
   }
 }

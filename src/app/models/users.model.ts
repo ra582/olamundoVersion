@@ -10,22 +10,29 @@ export interface User {
 
 
 export interface ResponseUsers {
-    status: string;
+    status: number;
     result: User[];
 }
 
 
 export interface ResponseUser {
-    status: string;
+    status: number;
     result: User[];
 }
 
+
 export interface ResponseDelUser {
-    status: string;
+    status: number;
     result: string;
 }
 
+
 export interface ResponsePostUser {
-    status: string;
+    status: number;
+    result: string;
+}
+
+export interface ResponsePutUser {
+    status: number;
     result: string;
 }
