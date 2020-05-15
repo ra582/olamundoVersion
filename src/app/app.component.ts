@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
 
-
+    // Item de menu "home"
     {
       title: 'Início',
       url: '/home',

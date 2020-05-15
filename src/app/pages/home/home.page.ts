@@ -23,4 +23,19 @@ export class HomePage implements OnInit {
   createUsers() {
     this.navCtrl.navigateForward('usuarios/criar');
   }
+
+
+  devStatus() {
+    this.navCtrl.navigateForward('dev/status');
+  }
+
+
+  devCamera() {
+    this.navCtrl.navigateForward('dev/camera');
+  }
+
+
+  geolocation() {
+    this.navCtrl.navigateForward('dev/gps');
+  }
 }

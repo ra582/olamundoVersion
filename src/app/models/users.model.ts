@@ -32,6 +32,7 @@ export interface ResponsePostUser {
     result: string;
 }
 
+
 export interface ResponsePutUser {
     status: number;
     result: string;

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+
 import { UsersService } from 'src/app/services/users.service';
 
 
@@ -45,6 +46,7 @@ export class UserformComponent implements OnInit {
       {
 
         id: [null],
+
 
         name: [
           null,
@@ -123,10 +125,11 @@ export class UserformComponent implements OnInit {
 
   onSubmit() {
 
-    // console.log(this.userForm.value);
+
 
 
     if (this.userForm.value.id === null) {
+
 
 
 
@@ -147,10 +150,8 @@ export class UserformComponent implements OnInit {
 
           if (res.status === 'success') {
 
-
             // tslint:disable-next-line: max-line-length
             if (confirm(`"${this.userForm.value.name}" foi adicionado com sucesso!\n\n    • Clique em [Ok] para listar usuários.\n    • Clique em [Cancel] para cadastrar outro usuário.`)) {
-
 
               this.navCtrl.navigateForward('usuarios/todos');
             } else {
@@ -174,7 +175,9 @@ export class UserformComponent implements OnInit {
 
           if (res.status === 'success') {
 
+
             alert(`"${this.userForm.value.name}" atualizado com sucesso!\nClique em [Ok] para continuar...`);
+
 
             this.navCtrl.navigateForward(`usuarios/usuario/${this.userForm.value.id}${this.makeId()}`);
           }

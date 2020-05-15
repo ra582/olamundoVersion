@@ -7,9 +7,10 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+// Importa o serviço de acesso aos usuários da API
 import { UsersService } from './services/users.service';
 
-
+// Módulo HTTP do Angular
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -20,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(),
     AppRoutingModule,
 
-
+    // Inicialização da classe HttpClientModule
     HttpClientModule
   ],
   providers: [
@@ -28,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 
-
+    // Inicialização da classe UsersService
     UsersService
   ],
   bootstrap: [AppComponent]

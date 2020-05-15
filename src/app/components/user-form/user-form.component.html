@@ -22,16 +22,17 @@
 
         <ion-list lines="full" class="ion-margin">
 
-    
+            
             <ion-item>
                 <ion-label for="name" position="floating" color="primary">Nome:
 
-                    
+                
                     <ion-text color="danger" *ngIf="userForm.controls.name.errors">
 
+                        
                         <small *ngIf="userForm.controls.name.errors.required">* Obrigatório</small>
 
-                       
+                    
                         <small *ngIf="userForm.controls.name.errors.minlength">* Inválido</small>
                     </ion-text>
 
@@ -39,7 +40,7 @@
                 <ion-input type="text" id="name" name="name" formControlName="name"></ion-input>
             </ion-item>
 
-           
+            
             <ion-item>
                 <ion-label for="email" position="floating" color="primary">E-mail:
                     <ion-text color="danger" *ngIf="userForm.controls.email.errors">
@@ -50,7 +51,7 @@
                 <ion-input type="email" id="email" name="email" formControlName="email"></ion-input>
             </ion-item>
 
-           
+            
             <ion-item>
                 <ion-label for="avatar" position="floating" color="primary">URL do avatar:
                     <ion-text color="danger" *ngIf="userForm.controls.avatar.errors">
@@ -61,7 +62,7 @@
                 <ion-input type="url" id="avatar" name="avatar" formControlName="avatar"></ion-input>
             </ion-item>
 
-          
+        
             <ion-item>
                 <ion-label for="status" color="primary">Status:</ion-label>
                 <ion-toggle id="status" name="status" slot="end" formControlName="status"></ion-toggle>

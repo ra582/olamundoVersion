@@ -13,7 +13,7 @@ export class E404Page implements OnInit {
   ngOnInit() {
   }
 
-  // Ação do botão
+
   goBack() {
     this.navCtrl.navigateForward('home');
   }
