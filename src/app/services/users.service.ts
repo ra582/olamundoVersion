@@ -15,7 +15,7 @@ import { ResponseUsers, ResponseUser, ResponseDelUser, ResponsePostUser, Respons
 export class UsersService {
 
 
-  private apiurl = 'http://localhost:8888/api';
+  private apiurl = 'https://fake-api-rest.herokuapp.com/api';
 
 
   constructor(private http: HttpClient) { }
